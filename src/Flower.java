@@ -14,6 +14,9 @@ public class Flower implements GardenObject {
         this.color2D = color;
         this.moveable = moveable;
         this.radius = radius;
+        circle.setFill(color);
+        circle.setStroke(Color.BLACK);
+        circle.setStrokeWidth(1);
         circle.setRadius(radius);
         circle.setCenterX(position.getX());
         circle.setCenterY(position.getY());

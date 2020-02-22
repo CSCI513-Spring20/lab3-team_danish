@@ -12,25 +12,24 @@ public class Garden extends Application {
     private Scene scene;
     private Point2D clickPoint;
     private Flower flower;
+    private FlowerBed flowerBed;
     private Point2D lastPosition;
 
     @Override
     public void start(Stage stage) {
         root = new AnchorPane();
-        scene = new Scene(root, 500, 500);
-        Point2D flowerPos = new Point2D(10, 10);
-        flower = new Flower(flowerPos, Color.RED, 25, true);
+        scene = new Scene(root, 800, 800);
+        flower = new Flower(new Point2D(10, 10), Color.RED, 20, true);
+        flowerBed = new FlowerBed(new Point2D (100, 100), 200, 150);
         lastPosition = flower.getCurrentPosition();
 
+        root.getChildren().add(flowerBed.getRect());
         root.getChildren().add(flower.getCircle());
+        scene.setFill(Color.LIGHTGREEN);
 
         scene.setOnMouseDragged(mouseHandler);
         scene.setOnMousePressed(mouseHandler);
         scene.setOnMouseReleased(mouseHandler);
-        scene.setOnMouseClicked(mouseHandler);
-        scene.setOnMouseEntered(mouseHandler);
-        scene.setOnMouseExited(mouseHandler);
-        scene.setOnMouseMoved(mouseHandler);
 
         stage.setTitle("Garden");
         stage.setScene(scene);

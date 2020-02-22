@@ -17,14 +17,22 @@ public class FlowerBed implements GardenObject {
         this.topLeft = topLeft;
         this.height = height;
         this.width = width;
+        rect.setFill(Color.GREEN);
         rect.setHeight(height);
         rect.setWidth(width);
         rect.setX(topLeft.getX());
         rect.setY(topLeft.getY());
+        rect.setStroke(Color.BLACK);
+        rect.setStrokeWidth(3);
+    }
+
+    public Rectangle getRect() {
+        return rect;
     }
 
     @Override
     public void move(double x, double y) {
-
+        rect.setX(rect.getX() + x);
+        rect.setY(rect.getY() + y);
     }
 }
