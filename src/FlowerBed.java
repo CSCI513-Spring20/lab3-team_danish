@@ -11,7 +11,7 @@ public class FlowerBed implements GardenObject {
     int width;
     Color rectangleColor;
     Rectangle rect = new Rectangle();
-    List<GardenObject> myGardenObjects = new ArrayList<GardenObject>();
+    List<GardenObject> flowerBedObjects = new ArrayList<GardenObject>();
 
     public FlowerBed(Point2D topLeft, int height, int width) {
         this.topLeft = topLeft;
@@ -28,6 +28,32 @@ public class FlowerBed implements GardenObject {
 
     public Rectangle getRect() {
         return rect;
+    }
+
+    public void addChild(Flower flower) {
+        flowerBedObjects.add(flower);
+        flower.removeStroke();
+    }
+
+    @Override
+    public void moveRelative(double X, double Y) {
+        rect.setX(rect.getX()+X);
+        rect.setY(rect.getY()+Y);
+        for(GardenObject child: flowerBedObjects){
+            child.moveRelative(X,Y);
+        }
+    }
+
+    @Override
+    public void removeStroke() {
+
+    }
+
+    @Override
+    public boolean containsPoint(Point2D point) {
+        if(rect.contains(point))
+            return true;
+        return false;
     }
 
     @Override

@@ -28,6 +28,24 @@ public class Flower implements GardenObject {
         circle.setCenterY(circle.getCenterY() + y);
     }
 
+    @Override
+    public boolean containsPoint(Point2D point) {
+        if(circle.contains(point))
+            return true;
+        return false;
+    }
+
+    @Override
+    public void moveRelative(double X, double Y) {
+        circle.setCenterX(circle.getCenterX()+X);
+        circle.setCenterY(circle.getCenterY()+Y);
+
+    }
+
+    public void removeStroke() {
+        this.circle.setStroke(Color.GREEN);
+    }
+
     public Circle getCircle() {
         return circle;
     }
